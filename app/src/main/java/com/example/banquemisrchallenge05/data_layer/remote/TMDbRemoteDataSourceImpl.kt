@@ -24,8 +24,20 @@ class TMDbRemoteDataSourceImpl private constructor() : TMDbRemoteDataSource {
         }
     }
 
-    override suspend fun fetchNowPlayingMovies(): Flow<List<Movie>> {
-        val movies = apiService.fetchNowPlayingMovies().results
+    override suspend fun fetchNowPlayingMovies(page: Int): Flow<List<Movie>> {
+        val movies = apiService.fetchNowPlayingMovies(page = page).results
+
+        return flowOf(movies)
+    }
+
+    override suspend fun fetchPopularMovies(page: Int): Flow<List<Movie>> {
+        val movies = apiService.fetchPopularMovies(page = page).results
+
+        return flowOf(movies)
+    }
+
+    override suspend fun fetchUpcomingMovies(page: Int): Flow<List<Movie>> {
+        val movies = apiService.fetchUpcomingMovies(page = page).results
 
         return flowOf(movies)
     }

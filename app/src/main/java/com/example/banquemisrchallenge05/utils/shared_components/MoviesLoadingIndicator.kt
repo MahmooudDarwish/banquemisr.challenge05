@@ -15,6 +15,6 @@ fun MoviesLoadingIndicator() {
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        LottieAnimation(lottieRawRes = R.raw.movie_loading)
+        CustomLottieAnimation(lottieRawRes = R.raw.movie_loading)
     }
 }

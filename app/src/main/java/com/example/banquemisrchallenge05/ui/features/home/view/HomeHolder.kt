@@ -1,144 +1,96 @@
 package com.example.banquemisrchallenge05.ui.features.home.view
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.banquemisrchallenge05.ui.features.now_playing.view.NowPlayingScreen
+import com.example.banquemisrchallenge05.ui.features.now_playing.view_model.NowPlayingViewModel
+import com.example.banquemisrchallenge05.ui.features.popular.view.PopularScreen
+import com.example.banquemisrchallenge05.ui.features.popular.view_model.PopularViewModel
+import com.example.banquemisrchallenge05.ui.features.upcoming.view.UpcomingScreen
+import com.example.banquemisrchallenge05.ui.features.upcoming.view_model.UpcomingViewModel
 import com.example.banquemisrchallenge05.utils.navigation.Screen
 import com.example.e_store.features.profile.view_model.HomeViewModel
 
 @Composable
-fun HomeHolder(navController: NavHostController, homeViewModel: HomeViewModel) {
-    val items = listOf(
+fun HomeHolder(
+    navController: NavHostController,
+    homeViewModel: HomeViewModel,
+    nowPlayingViewModel: NowPlayingViewModel,
+    popularViewModel: PopularViewModel,
+    upcomingViewModel: UpcomingViewModel,
+) {
+    val tabItems = listOf(
         Screen.NowPlaying,
         Screen.Popular,
-        Screen.Upcoming,
+        Screen.Upcoming
     )
 
-}
+    var selectedTabIndex by remember { mutableStateOf(0) }
 
-
-/*@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MainHomeScreen(
-    homeViewModelFactory: HomeViewModelFactory,
-    brandProductsViewModelFactory: BrandProductsViewModelFactory,
-    shoppingCartViewModelFactory: ShoppingCartViewModelFactory,
-    productInfoViewModelFactory: ProductInfoViewModelFactory,
-    searchViewModelFactory: SearchViewModelFactory,
-    categoriesViewModelFactory: CategoriesViewModelFactory,
-    favouritesViewModelFactory: FavouritesViewModelFactory,
-    profileViewModelFactory: ProfileViewModelFactory,
-    ordersViewModelFactory: OrdersViewModelFactory,
-    authenticationViewModelFactory: AuthenticationViewModelFactory,
-    checkoutViewModelFactory: CheckoutViewModelFactory,
-    addLocationFactory: AddLocationViewModelFactory,
-    locationViewModelFactory: LocationViewModelFactory,
-    mapViewModelFactory: MapViewModelFactory,
-    paymentViewModelFactory: PaymentViewModelFactory,
-    settingsViewModelFactory: SettingsViewModelFactory,
-    favouriteControllerViewModelFactory: FavouriteControllerViewModelFactory,
-) {
-
-
-    val navController = rememberNavController()
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route ?: ""
-
-    val context = LocalContext.current
-    val internetChecker = remember { InternetChecker(context) }
-    var isInternetAvailable by remember { mutableStateOf(false) }
-
-    LaunchedEffect(Unit) {
-        internetChecker.startMonitoring()
-        internetChecker.networkStateFlow.collect { isConnected ->
-            isInternetAvailable = isConnected
-        }
-    }
-
-    DisposableEffect(Unit) {
-        onDispose {
-            internetChecker.stopMonitoring()
-        }
-    }
-
-    // Managing the selected tab
-    val selectedTabIndex = when {
-        currentRoute.startsWith(Screen.Home.route) -> 0
-        currentRoute.startsWith(Screen.Categories.route) -> 1
-        currentRoute.startsWith(Screen.Cart.route) -> 2
-        currentRoute.startsWith(Screen.Profile.route) -> 3
-        else -> 0
-    }
-
-    Scaffold(
-        containerColor = Color.White,
-        topBar = {
-            Column {
-                if (isInternetAvailable) {
-                    // Tab bar at the top
-                    TabRow(
-                        selectedTabIndex = selectedTabIndex,
-                        containerColor = Color.White,
-                        contentColor = PrimaryColor
-                    ) {
-                        items.forEachIndexed { index, screen ->
-                            Tab(
-                                selected = selectedTabIndex == index,
-                                onClick = {
-                                    // Navigate to the selected tab's screen
-                                    if (screen.route != currentRoute) {
-                                        navController.navigate(screen.route) {
-                                            popUpTo(navController.graph.startDestinationId) {
-                                                saveState = true
-                                            }
-                                            launchSingleTop = true
-                                            restoreState = true
-                                        }
-                                    }
-                                },
-                                text = { Text(screen.title) }
-                            )
-                        }
-                    }
-                }
-                CenterAlignedTopAppBar(
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = Color.White),
-                    title = {
+    Column {
+        // Tab Row
+        TabRow(
+            modifier = Modifier.padding(top = 50.dp),
+            selectedTabIndex = selectedTabIndex,
+            containerColor = Color.Black,
+            contentColor = Color.White,
+        ) {
+            tabItems.forEachIndexed { index, screen ->
+                Tab(
+                    selected = selectedTabIndex == index,
+                    onClick = {
+                        selectedTabIndex = index
+                    },
+                    text = {
                         Text(
-                            text = context.getString(R.string.app_name),
-                            color = PrimaryColor,
-                            fontStyle = FontStyle.Italic
+                            stringResource(id = screen.title),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
                         )
                     }
                 )
             }
-        },
-    ) { paddingValues ->
-        if (isInternetAvailable) {
-            Box(modifier = Modifier.padding(paddingValues)) {
-                AppNavigation(
+        }
+        when (selectedTabIndex) {
+            0 -> {
+                NowPlayingScreen(
+                    nowPlayingViewModel = nowPlayingViewModel,
                     navController = navController,
-                    homeViewModelFactory = homeViewModelFactory,
-                    brandProductsViewModelFactory = brandProductsViewModelFactory,
-                    categoriesViewModelFactory = categoriesViewModelFactory,
-                    searchViewModelFactory = searchViewModelFactory,
-                    profileViewModelFactory = profileViewModelFactory,
-                    productInfoViewModelFactory = productInfoViewModelFactory,
-                    favouritesViewModelFactory = favouritesViewModelFactory,
-                    shoppingCartViewModelFactory = shoppingCartViewModelFactory,
-                    ordersViewModelFactory = ordersViewModelFactory,
-                    authenticationViewModelFactory = authenticationViewModelFactory,
-                    checkoutViewModelFactory = checkoutViewModelFactory,
-                    locationViewModelFactory = locationViewModelFactory,
-                    mapViewModelFactory = mapViewModelFactory,
-                    addLocationViewModelFactory = addLocationFactory,
-                    paymentViewModelFactory = paymentViewModelFactory,
-                    settingsViewModelFactory = settingsViewModelFactory,
-                    favouriteControllerViewModelFactory = favouriteControllerViewModelFactory
                 )
             }
-        } else {
-            NoInternetScreen()
+
+            1 -> {
+                PopularScreen(
+                    popularViewModel = popularViewModel,
+                    navController = navController,
+                )
+            }
+
+            2 -> {
+                UpcomingScreen(
+                    upcomingViewModel = upcomingViewModel,
+                    navController = navController,
+                )
+            }
         }
     }
+
 }
-*/
+

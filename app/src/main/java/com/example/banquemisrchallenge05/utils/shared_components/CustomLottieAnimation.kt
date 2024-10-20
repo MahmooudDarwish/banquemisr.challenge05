@@ -30,7 +30,7 @@ fun CustomLottieAnimation(
     ) {
         Box(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .height(200.dp)
                 .padding(bottom = 16.dp)
         ) {

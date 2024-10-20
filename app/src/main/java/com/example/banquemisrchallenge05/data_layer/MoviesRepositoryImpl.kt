@@ -27,7 +27,15 @@ class MoviesRepositoryImpl private constructor(
         }
     }
 
-    override suspend fun fetchNowPlayingMovies(): Flow<List<Movie>> {
-        return tmdBRemoteDataSource.fetchNowPlayingMovies()
+    override suspend fun fetchNowPlayingMovies(page: Int): Flow<List<Movie>> {
+        return tmdBRemoteDataSource.fetchNowPlayingMovies(page= page)
+    }
+
+    override suspend fun fetchPopularMovies(page: Int): Flow<List<Movie>> {
+        return tmdBRemoteDataSource.fetchPopularMovies(page= page)
+    }
+
+    override suspend fun fetchUpcomingMovies(page: Int): Flow<List<Movie>> {
+        return tmdBRemoteDataSource.fetchUpcomingMovies(page= page)
     }
 }

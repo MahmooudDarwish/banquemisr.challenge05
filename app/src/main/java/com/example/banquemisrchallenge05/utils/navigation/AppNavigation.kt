@@ -45,8 +45,21 @@ fun AppNavigation(
         }
 
         composable(route = Screen.Home.route) {
-            val viewModel: HomeViewModel = viewModel(factory = homeViewModelFactory)
-            HomeHolder(navController = navController, homeViewModel = viewModel)
+            val homeViewModel: HomeViewModel = viewModel(factory = homeViewModelFactory)
+            val nowPlayingViewModel: NowPlayingViewModel =
+                viewModel(factory = nowPlayingViewModelFactory)
+            val popularViewModel: PopularViewModel =
+                viewModel(factory = popularMoviesViewModelFactory)
+            val upcomingViewModel: UpcomingViewModel =
+                viewModel(factory = upcomingMoviesViewModelFactory)
+
+            HomeHolder(
+                navController = navController,
+                homeViewModel = homeViewModel,
+                nowPlayingViewModel = nowPlayingViewModel,
+                popularViewModel = popularViewModel,
+                upcomingViewModel = upcomingViewModel,
+            )
         }
 
         composable(route = Screen.NowPlaying.route) {
@@ -63,7 +76,7 @@ fun AppNavigation(
 
         composable(route = Screen.Upcoming.route) {
             val viewModel: UpcomingViewModel = viewModel(factory = upcomingMoviesViewModelFactory)
-            UpcomingScreen(upcomingviewModel = viewModel, navController = navController)
+            UpcomingScreen(upcomingViewModel = viewModel, navController = navController)
         }
 
         composable(

@@ -10,21 +10,18 @@ import retrofit2.Response
 interface TMDbAPIServices {
     @GET(APIKeys.NOW_PLAYING_ENDPOINT)
     suspend fun fetchNowPlayingMovies(
-        @Query(APIKeys.API_KEY_QUERY) apiKey: String? = APIKeys.API_KEY,
         @Query(APIKeys.PAGE_QUERY) page: Int? = APIKeys.PAGE_VALUE,
         @Query(APIKeys.LANGUAGE_QUERY) language: String? = APIKeys.LANGUAGE_VALUE,
     ): MoviesResponse
 
     @GET(APIKeys.POPULAR_ENDPOINT)
     suspend fun fetchPopularMovies(
-        @Query(APIKeys.API_KEY_QUERY) apiKey: String? = APIKeys.API_KEY,
         @Query(APIKeys.PAGE_QUERY) page: Int? = APIKeys.PAGE_VALUE,
         @Query(APIKeys.LANGUAGE_QUERY) language: String? = APIKeys.LANGUAGE_VALUE,
     ): MoviesResponse
 
     @GET(APIKeys.UPCOMING_ENDPOINT)
     suspend fun fetchUpcomingMovies(
-        @Query(APIKeys.API_KEY_QUERY) apiKey: String? = APIKeys.API_KEY,
         @Query(APIKeys.PAGE_QUERY) page: Int? = APIKeys.PAGE_VALUE,
         @Query(APIKeys.LANGUAGE_QUERY) language: String? = APIKeys.LANGUAGE_VALUE,
     ): MoviesResponse
