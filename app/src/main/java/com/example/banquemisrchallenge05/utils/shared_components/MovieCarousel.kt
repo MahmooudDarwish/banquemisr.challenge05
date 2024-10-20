@@ -17,6 +17,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.banquemisrchallenge05.utils.shared_models.Movie
 import kotlin.math.absoluteValue
 
@@ -24,6 +26,7 @@ import kotlin.math.absoluteValue
 fun MovieCarousel(
     movies: List<Movie>,
     modifier: Modifier = Modifier,
+    navController: NavController,
 ) {
     val pagerState = rememberPagerState(initialPage = 0, pageCount = { movies.size })
 
@@ -69,7 +72,9 @@ fun MovieCarousel(
                             }
                             .padding(horizontal = 10.dp)
                             .aspectRatio(0.7f),
-                        onClick = { }
+                        onClick = {
+                            navController.navigate("movie_details/${movies[page].id}")
+                        }
                     )
                 }
             } else {

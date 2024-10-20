@@ -1,8 +1,9 @@
 package com.example.banquemisrchallenge05.data_layer.remote
 
+import com.example.banquemisrchallenge05.data_layer.remote.tmdb.TMDbAPIServices
 import com.example.banquemisrchallenge05.utils.shared_models.Movie
-import com.example.e_store.utils.data_layer.remote.shopify.TMDbAPIServices
-import com.example.e_store.utils.data_layer.remote.shopify.TMDbRetrofitHelper
+import com.example.banquemisrchallenge05.data_layer.remote.tmdb.TMDbRetrofitHelper
+import com.example.banquemisrchallenge05.ui.features.movie_details.model.MovieDetails
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
@@ -40,5 +41,10 @@ class TMDbRemoteDataSourceImpl private constructor() : TMDbRemoteDataSource {
         val movies = apiService.fetchUpcomingMovies(page = page).results
 
         return flowOf(movies)
+    }
+
+    override suspend fun fetchMovieDetails(movieId: Int): Flow<MovieDetails> {
+        val movie = apiService.fetchMovieDetails(movieId = movieId)
+        return flowOf(movie)
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">banquemisr.challenge05.</string>
+    <string name="app_name">Movies</string>
     <string name="splash_title">Splash</string>
     <string name="home_title">Home\n</string>
     <string name="movie_details">Movie Details</string>

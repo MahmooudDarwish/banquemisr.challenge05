@@ -2,6 +2,8 @@ package com.example.banquemisrchallenge05.utils.shared_components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.banquemisrchallenge05.utils.shared_models.DataState
 import com.example.banquemisrchallenge05.utils.shared_models.Movie
 
@@ -9,6 +11,7 @@ import com.example.banquemisrchallenge05.utils.shared_models.Movie
 fun MovieList(
     moviesUiState: DataState<List<Movie>>,
     onFetchMovies: () -> Unit,
+    navController: NavController,
 ) {
     LaunchedEffect(Unit) {
         onFetchMovies()
@@ -21,7 +24,7 @@ fun MovieList(
 
         is DataState.Success -> {
             val movies = moviesUiState.data
-            MovieCarousel(movies = movies)
+            MovieCarousel(movies = movies, navController = navController)
         }
 
         is DataState.Error -> {

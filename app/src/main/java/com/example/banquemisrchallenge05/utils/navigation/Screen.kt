@@ -9,8 +9,9 @@ sealed class Screen(val route: String, val title: Int) {
     data object Home : Screen(route = NavigationKeys.HOME_ROUTE, title = R.string.home_title)
     data object MovieDetails :
         Screen(route = NavigationKeys.MOVIE_DETAILS_ROUTE, title = R.string.movie_details) {
-        fun createRoute(movieId: String) = "$route/$movieId"
+        fun createRoute(movieId: Int) = "$route/$movieId"
     }
+
     data object NowPlaying :
         Screen(route = NavigationKeys.NOW_PLAYING_ROUTE, title = R.string.now_playing_title)
 

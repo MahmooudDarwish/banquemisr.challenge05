@@ -4,10 +4,9 @@ package com.example.banquemisrchallenge05.utils.shared_components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,20 +17,29 @@ import com.example.banquemisrchallenge05.R
 
 @Composable
 fun BackButton(onBackClick: () -> Unit) {
-    Box (modifier = Modifier.padding(top = 20.dp))
-    {
+    Box(
+        modifier = Modifier
+            .padding(top = 20.dp, start = 16.dp)
+            .clickable {
+                onBackClick()
+            }
+    ) {
         Image(
-            painter = painterResource(id = R.drawable.back_button),
+            painter = painterResource(id = R.drawable.circle),
             modifier = Modifier
-                .height(65.dp)
-                .width(45.dp)
-                .wrapContentWidth(Alignment.Start)
-                .clickable {
-                    onBackClick()
-                },
-            contentDescription = "back",
+                .size(45.dp),
+            contentDescription = "back circle",
+            contentScale = ContentScale.Fit
+        )
+        Image(
+            painter = painterResource(id = R.drawable.back_arrow),
+            modifier = Modifier
+                .size(25.dp)
+                .align(Alignment.Center),
+            contentDescription = "back arrow",
             contentScale = ContentScale.Fit
         )
     }
 }
+
 

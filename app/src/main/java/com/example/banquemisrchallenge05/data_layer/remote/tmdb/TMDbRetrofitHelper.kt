@@ -1,6 +1,6 @@
-package com.example.e_store.utils.data_layer.remote.shopify
+package com.example.banquemisrchallenge05.data_layer.remote.tmdb
 
-import com.airbnb.lottie.compose.BuildConfig
+
 import com.example.banquemisrchallenge05.utils.constants.APIKeys
 import okhttp3.Cache
 import okhttp3.Interceptor
@@ -33,11 +33,9 @@ object TMDbRetrofitHelper {
             .addInterceptor(headerInterceptor)
             .cache(cache)
 
-        if (BuildConfig.DEBUG) {
             val logging = HttpLoggingInterceptor()
             logging.setLevel(HttpLoggingInterceptor.Level.BODY)
             clientBuilder.addInterceptor(logging)
-        }
 
         val client = clientBuilder.build()
 

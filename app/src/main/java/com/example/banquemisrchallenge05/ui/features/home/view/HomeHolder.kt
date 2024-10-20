@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.banquemisrchallenge05.ui.features.now_playing.view.NowPlayingScreen
 import com.example.banquemisrchallenge05.ui.features.now_playing.view_model.NowPlayingViewModel
@@ -30,7 +31,7 @@ import com.example.e_store.features.profile.view_model.HomeViewModel
 
 @Composable
 fun HomeHolder(
-    navController: NavHostController,
+    navController: NavController,
     homeViewModel: HomeViewModel,
     nowPlayingViewModel: NowPlayingViewModel,
     popularViewModel: PopularViewModel,

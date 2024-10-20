@@ -13,16 +13,21 @@ object APIKeys {
     const val NOW_PLAYING_ENDPOINT = "now_playing"
     const val POPULAR_ENDPOINT = "popular"
     const val UPCOMING_ENDPOINT = "upcoming"
+    const val MOVIE_DETAILS_ENDPOINT = "{movie_id}"
+
+    //Path params
+    const val MOVIE_ID_PATH = "movie_id"
 
     //Endpoints Params
     const val API_KEY_QUERY = "api_key"
     const val LANGUAGE_QUERY = "language"
     const val PAGE_QUERY = "page"
 
+
     //Values
     const val LANGUAGE_VALUE = "en-US"
     const val PAGE_VALUE = 1
-    const val API_KEY = "f56edc0520a95df9fbd482dbd3cfcef7"
+    const val API_KEY_VALUE = "f56edc0520a95df9fbd482dbd3cfcef7"
 
 
 }
