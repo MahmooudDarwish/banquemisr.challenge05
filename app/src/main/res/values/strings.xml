@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">banquemisr.challenge05.</string>
+    <string name="splash_title">Splash</string>
+    <string name="home_title">Home\n</string>
+    <string name="movie_details">Movie Details</string>
+    <string name="now_playing_title">Now Playing</string>
+    <string name="popular_title">Popular</string>
+    <string name="upcoming_title">Upcoming</string>
+    <string name="connection_restored">Connection Restored</string>
+    <string name="turn_on_wifi">TURN ON WI-FI</string>
+    <string name="no_internet_title">No Internet Connection</string>
+    <string name="no_internet_message">Please check your internet connection and try again.</string>
 </resources>

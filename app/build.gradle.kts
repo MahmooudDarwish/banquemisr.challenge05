@@ -51,6 +51,30 @@ android {
 
 dependencies {
 
+    // Retrofit for API requests
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
+
+
+    //Jetpack Compose
+    implementation ("androidx.compose.ui:ui:1.3.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0")
+
+    // Coroutines for background work
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    //Coil for images
+    implementation("io.coil-kt:coil-compose:2.0.0")
+
+    //lottie
+    implementation(libs.lottie)
+
+    //Navigation
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
