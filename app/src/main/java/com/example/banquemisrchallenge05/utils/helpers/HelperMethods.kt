@@ -1,10 +1,10 @@
 package com.example.banquemisrchallenge05.utils.helpers
 
 import com.example.banquemisrchallenge05.ui.features.movie_details.model.ProductionCountry
+import com.example.banquemisrchallenge05.utils.constants.APIKeys
 
 fun getImageUrl(posterPath: String): String {
-    val baseUrl = "https://image.tmdb.org/t/p/w500"
-    return baseUrl + posterPath
+    return APIKeys.IMAGE_BASE_URL + posterPath
 }
 
 fun getCountryFlag(isoCode: String): String {

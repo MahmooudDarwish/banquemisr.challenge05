@@ -20,5 +20,6 @@
     <string name="unknown_error">Unknown error occurred.</string>
     <string name="unexpected_error">Unexpected error: %1$s</string>
     <string name="no_data_found">No data found</string>
+    <string name="dismiss">Dismiss</string>
 
 </resources>

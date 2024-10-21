@@ -11,7 +11,7 @@ import com.example.banquemisrchallenge05.utils.shared_models.Movie
 @Composable
 fun MovieBackground(movie: Movie) {
     AsyncImage(
-        model = getImageUrl(movie.poster_path),
+        model = getImageUrl(movie.poster_path ?: movie.backdrop_path ?: ""),
         contentDescription = null,
         modifier = Modifier.fillMaxSize(),
         contentScale = ContentScale.Crop

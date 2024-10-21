@@ -22,7 +22,7 @@ fun MovieBackdrop(movie: MovieDetails, navController: NavController) {
             .height(300.dp)
     ) {
         AsyncImage(
-            model = getImageUrl(movie.backdrop_path),
+            model = getImageUrl(movie.backdrop_path ?: movie.poster_path ?: " "),
             contentDescription = null,
             contentScale = ContentScale.Fit,
             modifier = Modifier.fillMaxSize()

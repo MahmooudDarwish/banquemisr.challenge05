@@ -38,7 +38,7 @@ fun MovieCard(movie: Movie, modifier: Modifier = Modifier, onClick: () -> Unit) 
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             AsyncImage(
-                model = getImageUrl(movie.poster_path),
+                model = getImageUrl(movie.poster_path ?: movie.backdrop_path ?: " "),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()

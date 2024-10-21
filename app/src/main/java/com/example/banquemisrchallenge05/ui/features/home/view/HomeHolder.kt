@@ -1,6 +1,7 @@
 package com.example.banquemisrchallenge05.ui.features.home.view
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
@@ -29,7 +30,7 @@ import com.example.banquemisrchallenge05.ui.features.upcoming.view.UpcomingScree
 import com.example.banquemisrchallenge05.ui.features.upcoming.view_model.UpcomingViewModel
 import com.example.banquemisrchallenge05.utils.navigation.Screen
 import com.example.banquemisrchallenge05.ui.features.home.view_model.HomeViewModel
-import com.example.banquemisrchallenge05.utils.shared_components.NoInternetScreen
+import com.example.banquemisrchallenge05.utils.shared_components.NoInternetDialog
 import com.example.weather.utils.managers.InternetChecker
 
 @Composable
@@ -51,6 +52,8 @@ fun HomeHolder(
     val internetChecker = remember { InternetChecker(context) }
     var isInternetAvailable by remember { mutableStateOf(false) }
 
+    var showNoInternetDialog by remember { mutableStateOf(false) }
+
 
     LaunchedEffect(Unit) {
         internetChecker.startMonitoring()
@@ -65,9 +68,16 @@ fun HomeHolder(
         }
     }
 
-    if (!isInternetAvailable) {
-        NoInternetScreen()
-    } else {
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        LaunchedEffect(isInternetAvailable) {
+            if (!isInternetAvailable) {
+                showNoInternetDialog = true
+            }
+        }
         Column(
             modifier = Modifier.padding(top = 50.dp),
         ) {
@@ -92,6 +102,7 @@ fun HomeHolder(
                     )
                 }
             }
+
             when (selectedTabIndex) {
                 0 -> {
                     NowPlayingScreen(
@@ -115,5 +126,9 @@ fun HomeHolder(
                 }
             }
         }
+        if (!isInternetAvailable) {
+            NoInternetDialog(onDismiss = { showNoInternetDialog = false })
+        }
+
     }
 }
