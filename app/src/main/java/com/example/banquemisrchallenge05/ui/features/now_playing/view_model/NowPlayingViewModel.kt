@@ -1,5 +1,8 @@
 package com.example.banquemisrchallenge05.ui.features.now_playing.view_model
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.banquemisrchallenge05.data_layer.MoviesRepository
@@ -16,9 +19,9 @@ class NowPlayingViewModel(private val repository: MoviesRepository) : ViewModel(
     private val _nowPlayingMovies = MutableStateFlow<DataState<List<Movie>>>(DataState.Loading)
     val nowPlayingMovies = _nowPlayingMovies.asStateFlow()
 
+    var currentPage by mutableIntStateOf(0)
 
     private val TAG = "NowPlayingViewModel"
-
     fun getNowPlayingMovies(page: Int = 1) {
         _nowPlayingMovies.value = DataState.Loading
         viewModelScope.launch(Dispatchers.IO) {

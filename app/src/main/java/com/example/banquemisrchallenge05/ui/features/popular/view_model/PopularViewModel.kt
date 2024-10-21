@@ -1,5 +1,8 @@
 package com.example.banquemisrchallenge05.ui.features.popular.view_model
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.banquemisrchallenge05.data_layer.MoviesRepository
@@ -15,6 +18,7 @@ class PopularViewModel(private val repository: MoviesRepository) : ViewModel() {
 
     private val _popularMovies = MutableStateFlow<DataState<List<Movie>>>(DataState.Loading)
     val popularMovies = _popularMovies.asStateFlow()
+    var currentPage by mutableIntStateOf(0)
 
 
     private val TAG = "PopularViewModel"

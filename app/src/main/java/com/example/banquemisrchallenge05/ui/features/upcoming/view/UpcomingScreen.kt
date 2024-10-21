@@ -15,7 +15,10 @@ fun UpcomingScreen(upcomingViewModel: UpcomingViewModel, navController: NavContr
     MovieList(
         moviesUiState = popularMoviesUiState,
         onFetchMovies = { upcomingViewModel.getUpcomingMovies() },
-        navController = navController
-
+        navController = navController,
+        currentPage = upcomingViewModel.currentPage,
+        onMovieChange = { page: Int ->
+            upcomingViewModel.currentPage = page
+        },
     )
 }

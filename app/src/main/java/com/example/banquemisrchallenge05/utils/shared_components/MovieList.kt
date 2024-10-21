@@ -7,33 +7,40 @@ import com.example.banquemisrchallenge05.R
 import com.example.banquemisrchallenge05.utils.shared_models.DataState
 import com.example.banquemisrchallenge05.utils.shared_models.Movie
 
-    @Composable
-    fun MovieList(
-        moviesUiState: DataState<List<Movie>>,
-        onFetchMovies: () -> Unit,
-        navController: NavController,
-    ) {
-        LaunchedEffect(Unit) {
-            onFetchMovies()
+@Composable
+fun MovieList(
+    moviesUiState: DataState<List<Movie>>,
+    onFetchMovies: () -> Unit,
+    navController: NavController,
+    currentPage: Int,
+    onMovieChange: (Int) -> Unit,
+) {
+    LaunchedEffect(Unit) {
+        onFetchMovies()
+    }
+
+    when (moviesUiState) {
+        is DataState.Loading -> {
+            MoviesLoadingIndicator()
         }
 
-        when (moviesUiState) {
-            is DataState.Loading -> {
-                MoviesLoadingIndicator()
-            }
+        is DataState.Success -> {
+            val movies = moviesUiState.data
+            MovieCarousel(
+                movies = movies,
+                navController = navController,
+                currentPage = currentPage,
+                onMovieChange = onMovieChange
+            )
+        }
 
-            is DataState.Success -> {
-                val movies = moviesUiState.data
-                MovieCarousel(movies = movies, navController = navController)
-            }
+        is DataState.Error -> {
 
-            is DataState.Error -> {
+            LottieWithText(
+                textId = moviesUiState.message,
+                lottieAnimation = R.raw.error
+            )
 
-                LottieWithText(
-                    textId = moviesUiState.message,
-                    lottieAnimation = R.raw.error
-                )
-
-            }
         }
     }
+}
