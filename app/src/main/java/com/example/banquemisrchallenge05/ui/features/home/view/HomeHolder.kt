@@ -76,6 +76,8 @@ fun HomeHolder(
         LaunchedEffect(isInternetAvailable) {
             if (!isInternetAvailable) {
                 showNoInternetDialog = true
+            }else{
+                showNoInternetDialog = false
             }
         }
         Column(
@@ -126,7 +128,7 @@ fun HomeHolder(
                 }
             }
         }
-        if (!isInternetAvailable) {
+        if (showNoInternetDialog) {
             NoInternetDialog(onDismiss = { showNoInternetDialog = false })
         }
 
