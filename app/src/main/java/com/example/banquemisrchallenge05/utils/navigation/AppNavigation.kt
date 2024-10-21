@@ -24,8 +24,8 @@ import com.example.banquemisrchallenge05.ui.features.upcoming.view.UpcomingScree
 import com.example.banquemisrchallenge05.ui.features.upcoming.view_model.UpcomingViewModel
 import com.example.banquemisrchallenge05.ui.features.upcoming.view_model.UpcomingViewModelFactory
 import com.example.banquemisrchallenge05.utils.constants.NavigationKeys
-import com.example.e_store.features.profile.view_model.HomeViewModel
-import com.example.e_store.features.profile.view_model.HomeViewModelFactory
+import com.example.banquemisrchallenge05.ui.features.home.view_model.HomeViewModel
+import com.example.banquemisrchallenge05.ui.features.home.view_model.HomeViewModelFactory
 
 
 @Composable

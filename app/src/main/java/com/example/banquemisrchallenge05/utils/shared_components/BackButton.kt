@@ -4,7 +4,6 @@ package com.example.banquemisrchallenge05.utils.shared_components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -18,8 +17,9 @@ import com.example.banquemisrchallenge05.R
 @Composable
 fun BackButton(onBackClick: () -> Unit) {
     Box(
+        contentAlignment = Alignment.Center,
         modifier = Modifier
-            .padding(top = 20.dp, start = 16.dp)
+            .padding(top = 35.dp, start = 16.dp)
             .clickable {
                 onBackClick()
             }
@@ -34,8 +34,7 @@ fun BackButton(onBackClick: () -> Unit) {
         Image(
             painter = painterResource(id = R.drawable.back_arrow),
             modifier = Modifier
-                .size(25.dp)
-                .align(Alignment.Center),
+                .size(25.dp),
             contentDescription = "back arrow",
             contentScale = ContentScale.Fit
         )

@@ -79,6 +79,10 @@ dependencies {
     //lottie
     implementation(libs.lottie)
 
+    //flow layout
+    implementation("com.google.accompanist:accompanist-flowlayout:0.36.0")
+
+
     //Navigation
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)

@@ -6,7 +6,6 @@ import com.example.banquemisrchallenge05.data_layer.MoviesRepository
 import com.example.banquemisrchallenge05.ui.features.movie_details.model.MovieDetails
 import com.example.banquemisrchallenge05.utils.helpers.handleError
 import com.example.banquemisrchallenge05.utils.shared_models.DataState
-import com.example.banquemisrchallenge05.utils.shared_models.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

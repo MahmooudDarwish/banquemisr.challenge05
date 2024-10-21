@@ -5,13 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import coil.compose.AsyncImage
-import com.example.banquemisrchallenge05.utils.helpers.getMovieImageUrl
+import com.example.banquemisrchallenge05.utils.helpers.getImageUrl
 import com.example.banquemisrchallenge05.utils.shared_models.Movie
 
 @Composable
 fun MovieBackground(movie: Movie) {
     AsyncImage(
-        model = getMovieImageUrl(movie.poster_path),
+        model = getImageUrl(movie.poster_path),
         contentDescription = null,
         modifier = Modifier.fillMaxSize(),
         contentScale = ContentScale.Crop

@@ -1,7 +1,15 @@
 package com.example.banquemisrchallenge05.ui.features.splash.view
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.banquemisrchallenge05.R
 import com.example.banquemisrchallenge05.ui.features.splash.view_model.SplashViewModel
@@ -17,7 +25,16 @@ fun SplashScreen(navController: NavController, splashViewModel: SplashViewModel)
             popUpTo(Screen.Splash.route) { inclusive = true }
         }
     }
-    CustomLottieAnimation(
-        lottieRawRes = R.raw.splash
-    )
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black),
+        contentAlignment = Alignment.Center
+    ) {
+        CustomLottieAnimation(
+            lottieRawRes = R.raw.splash,
+            modifier = Modifier.size(200.dp)
+        )
+    }
 }

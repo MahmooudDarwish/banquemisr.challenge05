@@ -1,4 +1,4 @@
-package com.example.e_store.features.profile.view_model
+package com.example.banquemisrchallenge05.ui.features.home.view_model
 
 import androidx.lifecycle.ViewModel
 import com.example.banquemisrchallenge05.data_layer.MoviesRepository

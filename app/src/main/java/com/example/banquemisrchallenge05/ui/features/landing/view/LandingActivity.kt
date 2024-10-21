@@ -15,7 +15,7 @@ import com.example.banquemisrchallenge05.ui.features.splash.view_model.SplashVie
 import com.example.banquemisrchallenge05.ui.features.upcoming.view_model.UpcomingViewModelFactory
 import com.example.banquemisrchallenge05.ui.theme.Banquemisrchallenge05Theme
 import com.example.banquemisrchallenge05.utils.navigation.AppNavigation
-import com.example.e_store.features.profile.view_model.HomeViewModelFactory
+import com.example.banquemisrchallenge05.ui.features.home.view_model.HomeViewModelFactory
 
 class LandingActivity : ComponentActivity() {
 

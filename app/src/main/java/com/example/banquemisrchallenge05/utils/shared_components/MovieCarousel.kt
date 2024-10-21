@@ -14,11 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
+import com.example.banquemisrchallenge05.R
 import com.example.banquemisrchallenge05.utils.shared_models.Movie
 import kotlin.math.absoluteValue
 
@@ -78,7 +77,10 @@ fun MovieCarousel(
                     )
                 }
             } else {
-                NoDataFound()
+                LottieWithText(
+                    textId =  R.string.no_data_found,
+                    lottieAnimation = R.raw.no_data_found
+                )
             }
         }
     }

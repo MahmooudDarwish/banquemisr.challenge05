@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Brush
@@ -23,7 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.banquemisrchallenge05.utils.helpers.getMovieImageUrl
+import com.example.banquemisrchallenge05.utils.helpers.getImageUrl
 
 @Composable
 fun MovieCard(movie: Movie, modifier: Modifier = Modifier, onClick: () -> Unit) {
@@ -37,7 +38,7 @@ fun MovieCard(movie: Movie, modifier: Modifier = Modifier, onClick: () -> Unit) 
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             AsyncImage(
-                model = getMovieImageUrl(movie.poster_path),
+                model = getImageUrl(movie.poster_path),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
@@ -65,12 +66,16 @@ fun MovieCard(movie: Movie, modifier: Modifier = Modifier, onClick: () -> Unit) 
                 Text(
                     text = movie.title,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    color = Color.Gray
+
                 )
                 Text(
                     text = movie.release_date,
                     maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
+                    overflow = TextOverflow.Ellipsis,
+                    color = Color.Gray
+
                 )
             }
             Box(
@@ -82,7 +87,9 @@ fun MovieCard(movie: Movie, modifier: Modifier = Modifier, onClick: () -> Unit) 
             ) {
                 Text(
                     text = String.format("%.1f", movie.vote_average),
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+
                 )
             }
         }
