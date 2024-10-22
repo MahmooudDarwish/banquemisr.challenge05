@@ -4,7 +4,6 @@ import com.example.banquemisrchallenge05.data_layer.FakeMoviesRepositoryImpl
 import com.example.banquemisrchallenge05.data_layer.MoviesRepository
 import com.example.banquemisrchallenge05.data_layer.remote.FakeTMDbRemoteDataSourceImpl
 import com.example.banquemisrchallenge05.data_layer.remote.TMDbRemoteDataSource
-import com.example.banquemisrchallenge05.ui.features.now_playing.view_model.NowPlayingViewModel
 import com.example.banquemisrchallenge05.utils.shared_models.DataState
 import com.example.banquemisrchallenge05.utils.test_utils.MovieMockData
 import kotlinx.coroutines.Dispatchers
@@ -47,13 +46,13 @@ class PopularViewModelTest {
 
         testDispatcher.scheduler.advanceUntilIdle()
 
-        val nowPlayingMoviesStates = viewModel.popularMovies.value
+        val popularMoviesStates = viewModel.popularMovies.value
 
         // Assert: Check if the state flow has emitted the correct success state
-        Assert.assertTrue(nowPlayingMoviesStates is DataState.Success)
+        Assert.assertTrue(popularMoviesStates is DataState.Success)
         Assert.assertEquals(
             MovieMockData.popularMovies,
-            (nowPlayingMoviesStates as DataState.Success).data
+            (popularMoviesStates as DataState.Success).data
         )
     }
 
@@ -64,13 +63,13 @@ class PopularViewModelTest {
         viewModel.getPopularMovies(page = -500)
         testDispatcher.scheduler.advanceUntilIdle()
 
-        val nowPlayingMoviesStates = viewModel.popularMovies.value
+        val popularMoviesStates = viewModel.popularMovies.value
 
 
         // Assert: Verify the flow emits loading then error
         Assert.assertEquals(
             2131624064,
-            (nowPlayingMoviesStates as DataState.Error).message
+            (popularMoviesStates as DataState.Error).message
         )
 
     }
