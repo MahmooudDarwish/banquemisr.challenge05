@@ -30,8 +30,4 @@ class MovieDetailsViewModel(private val repository: MoviesRepository, private va
             }
         }
     }
-
-
-
-
 }

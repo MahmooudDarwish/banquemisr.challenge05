@@ -35,6 +35,4 @@ class NowPlayingViewModel(private val repository: MoviesRepository, private val 
             }
         }
     }
-
-
 }

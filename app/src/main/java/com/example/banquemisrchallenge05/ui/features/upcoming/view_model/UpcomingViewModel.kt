@@ -35,5 +35,4 @@ class UpcomingViewModel(private val repository: MoviesRepository,private val dis
             }
         }
     }
-
 }

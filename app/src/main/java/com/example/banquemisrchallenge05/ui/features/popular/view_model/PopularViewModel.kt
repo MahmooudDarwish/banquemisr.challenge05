@@ -36,6 +36,4 @@ class PopularViewModel(private val repository: MoviesRepository, private val dis
             }
         }
     }
-
-
 }
