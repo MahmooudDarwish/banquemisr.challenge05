@@ -18,6 +18,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -77,7 +78,7 @@ fun HomeHolder(
         LaunchedEffect(isInternetAvailable) {
             if (!isInternetAvailable) {
                 showNoInternetDialog = true
-            }else{
+            } else {
                 showNoInternetDialog = false
             }
         }
@@ -95,12 +96,14 @@ fun HomeHolder(
                         onClick = {
                             selectedTabIndex = index
                         },
+                        modifier = Modifier
+                            .testTag(if (selectedTabIndex == index) "${screen.route}_selected" else screen.route),
                         text = {
                             Text(
                                 stringResource(id = screen.title),
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold,
-                            )
+                                )
                         }
                     )
                 }

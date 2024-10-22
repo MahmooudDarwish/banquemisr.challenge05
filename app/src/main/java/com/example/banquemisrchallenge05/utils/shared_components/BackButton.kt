@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.banquemisrchallenge05.R
@@ -22,7 +23,7 @@ fun BackButton(onBackClick: () -> Unit) {
             .padding(top = 35.dp, start = 16.dp)
             .clickable {
                 onBackClick()
-            }
+            }.testTag("back_button")
     ) {
         Image(
             painter = painterResource(id = R.drawable.circle),

@@ -78,6 +78,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
     // AndroidX Test - JVM testing
     testImplementation("androidx.test:core-ktx:$androidXTestCoreVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     // AndroidX Test - Instrumented testing
     androidTestImplementation("androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion")
     androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion")
