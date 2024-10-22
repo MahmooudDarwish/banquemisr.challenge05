@@ -11,15 +11,19 @@ import kotlinx.coroutines.flow.flowOf
 class FakeTMDbRemoteDataSourceImpl : TMDbRemoteDataSource {
 
     override suspend fun fetchNowPlayingMovies(page: Int): Flow<List<Movie>> {
+        if (page < 0 || page > 289) throw IllegalArgumentException("INVALID PAGE")
         val movies = MovieMockData.getMovies(endpoint = APIKeys.NOW_PLAYING_ENDPOINT)
         return flowOf(movies.results)
     }
 
     override suspend fun fetchPopularMovies(page: Int): Flow<List<Movie>> {
+        if (page < 0 || page > 46674) throw IllegalArgumentException("INVALID PAGE")
         val movies = MovieMockData.getMovies(endpoint = APIKeys.POPULAR_ENDPOINT)
-        return flowOf(movies.results)    }
+        return flowOf(movies.results)
+    }
 
     override suspend fun fetchUpcomingMovies(page: Int): Flow<List<Movie>> {
+        if (page < 0 || page > 69) throw IllegalArgumentException("INVALID PAGE")
         val movies = MovieMockData.getMovies(endpoint = APIKeys.UPCOMING_ENDPOINT)
         return flowOf(movies.results)
     }

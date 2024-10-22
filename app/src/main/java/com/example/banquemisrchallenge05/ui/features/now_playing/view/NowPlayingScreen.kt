@@ -17,9 +17,9 @@ fun NowPlayingScreen(nowPlayingViewModel: NowPlayingViewModel, navController: Na
         moviesUiState = nowPlayingMoviesUiState,
         onFetchMovies = { nowPlayingViewModel.getNowPlayingMovies() },
         navController = navController,
-        currentPage = nowPlayingViewModel.currentPage,
+        currentPage = nowPlayingViewModel.currentMovie,
         onMovieChange = { page: Int ->
-            nowPlayingViewModel.currentPage = page
+            nowPlayingViewModel.currentMovie = page
         })
 }
 

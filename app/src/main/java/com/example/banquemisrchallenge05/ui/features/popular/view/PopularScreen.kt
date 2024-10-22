@@ -17,9 +17,9 @@ fun PopularScreen(popularViewModel: PopularViewModel, navController: NavControll
         moviesUiState = popularMoviesUiState,
         onFetchMovies = { popularViewModel.getPopularMovies() },
         navController= navController,
-        currentPage = popularViewModel.currentPage,
+        currentPage = popularViewModel.currentMovie,
         onMovieChange = { page: Int ->
-            popularViewModel.currentPage = page
+            popularViewModel.currentMovie = page
         }
 
     )
