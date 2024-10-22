@@ -1,5 +1,6 @@
 package com.example.banquemisrchallenge05.utils.test_utils
 
+import com.example.banquemisrchallenge05.utils.constants.APIKeys
 import com.example.banquemisrchallenge05.utils.shared_models.Dates
 import com.example.banquemisrchallenge05.utils.shared_models.Movie
 import com.example.banquemisrchallenge05.utils.shared_models.MoviesResponse
@@ -116,16 +117,41 @@ object MovieMockData {
         vote_count = 1300
     )
 
-    // Dividing movies into categories
-    val categorizedMovies: Map<String, List<Movie>> = mapOf(
-        "NowPlaying" to listOf(nowPlayingMovie1, nowPlayingMovie2),
-        "Upcoming" to listOf(upcomingMovie1, upcomingMovie2),
-        "Popular" to listOf(popularMovie1, popularMovie2)
-    )
+    var nowPlayingMovies = mutableListOf(nowPlayingMovie1, nowPlayingMovie2)
+    var upcomingMovies = mutableListOf(upcomingMovie1, upcomingMovie2)
+    var popularMovies = mutableListOf(popularMovie1, popularMovie2)
 
-    val mockMoviesResponse = MoviesResponse(
-        dates = mockDates,
-        page = 1,
-        results = categorizedMovies.values.flatten()
-    )
+
+    fun getMovies(endpoint: String): MoviesResponse {
+        return when (endpoint) {
+            APIKeys.NOW_PLAYING_ENDPOINT -> {
+                MoviesResponse(
+                    dates = mockDates,
+                    page = 1,
+                    results = nowPlayingMovies
+                )
+            }
+
+            APIKeys.UPCOMING_ENDPOINT -> {
+                MoviesResponse(
+                    dates = mockDates,
+                    page = 1,
+                    results = upcomingMovies
+                )
+            }
+
+            APIKeys.POPULAR_ENDPOINT -> {
+                MoviesResponse(
+                    dates = mockDates,
+                    page = 1,
+                    results = popularMovies
+                )
+            }
+
+            else -> {
+                throw IllegalArgumentException("Invalid endpoint: $endpoint")
+            }
+        }
+    }
+
 }
