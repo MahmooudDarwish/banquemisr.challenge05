@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.banquemisrchallenge05.R
@@ -50,13 +51,17 @@ fun MovieCarousel(
                 HorizontalPager(
                     state = pagerState,
                     contentPadding = PaddingValues(horizontal = 50.dp),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag("movie_carousel_pager")
+
                 ) { page ->
                     MovieCard(
                         movie = movies[page],
                         modifier = Modifier
                             .padding(horizontal = 10.dp)
-                            .aspectRatio(0.7f),
+                            .aspectRatio(0.7f)
+                            .testTag("movie_card_${page}"),
                         onClick = {
                             navController.navigate(Screen.MovieDetails.createRoute(movies[page].id))
                         }
