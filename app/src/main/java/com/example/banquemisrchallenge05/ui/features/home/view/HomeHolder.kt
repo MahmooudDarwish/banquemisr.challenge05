@@ -90,7 +90,7 @@ fun HomeHolder(
             modifier = Modifier.padding(top = 20.dp),
         ) {
             CustomLottieAnimation(
-                lottieRawRes = R.raw.dark_splash,
+                lottieRawRes = R.raw.logo,
                 modifier = Modifier.height(50.dp).fillMaxWidth()
             )
             TabRow(

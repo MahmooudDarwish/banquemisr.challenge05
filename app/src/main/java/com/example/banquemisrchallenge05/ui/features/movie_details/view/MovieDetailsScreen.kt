@@ -59,7 +59,7 @@ fun MovieDetailsScreen(
                 }
             )
             CustomLottieAnimation(
-                lottieRawRes = R.raw.dark_splash,
+                lottieRawRes = R.raw.logo,
                 modifier = Modifier
                     .height(50.dp)
                     .align(Alignment.Center)

@@ -33,7 +33,7 @@ fun SplashScreen(navController: NavController, splashViewModel: SplashViewModel)
         contentAlignment = Alignment.Center
     ) {
         CustomLottieAnimation(
-            lottieRawRes = R.raw.dark_splash,
+            lottieRawRes = R.raw.logo,
             modifier = Modifier.size(200.dp)
         )
     }
