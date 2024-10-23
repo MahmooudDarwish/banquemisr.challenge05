@@ -21,6 +21,9 @@ import com.example.banquemisrchallenge05.R
 import com.example.banquemisrchallenge05.utils.navigation.Screen
 import com.example.banquemisrchallenge05.utils.shared_models.Movie
 import com.example.banquemisrchallenge05.utils.test_utils.TestTags
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.util.lerp
+import kotlin.math.absoluteValue
 
 @Composable
 fun MovieCarousel(
@@ -54,14 +57,31 @@ fun MovieCarousel(
                     contentPadding = PaddingValues(horizontal = 50.dp),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .testTag(TestTags.MOVIE_CAROUSEL_TAG )
-
+                        .testTag(TestTags.MOVIE_CAROUSEL_TAG),
+                    verticalAlignment = Alignment.CenterVertically
                 ) { page ->
+
+                    val pageOffset = (pagerState.currentPage - page + pagerState.currentPageOffsetFraction).absoluteValue
+
                     MovieCard(
                         movie = movies[page],
                         modifier = Modifier
                             .padding(horizontal = 10.dp)
                             .aspectRatio(0.7f)
+                            .graphicsLayer {
+                                val scale = lerp(
+                                    start = 0.85f,
+                                    stop = 1f,
+                                    fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                                )
+                                scaleX = scale
+                                scaleY = scale
+                                alpha = lerp(
+                                    start = 0.5f,
+                                    stop = 1f,
+                                    fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                                )
+                            }
                             .testTag("movie_card_${page}"),
                         onClick = {
                             navController.navigate(Screen.MovieDetails.createRoute(movies[page].id))
