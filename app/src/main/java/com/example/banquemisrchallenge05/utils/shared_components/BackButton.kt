@@ -38,7 +38,7 @@ fun BackButton(onBackClick: () -> Unit) {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
-                .padding(top = 35.dp, start = 16.dp)
+                .padding(start = 16.dp)
                 .clickable {
                     onBackClick()
                 }

@@ -2,6 +2,8 @@ package com.example.banquemisrchallenge05.ui.features.home.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Tab
@@ -24,6 +26,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.banquemisrchallenge05.R
 import com.example.banquemisrchallenge05.ui.features.now_playing.view.NowPlayingScreen
 import com.example.banquemisrchallenge05.ui.features.now_playing.view_model.NowPlayingViewModel
 import com.example.banquemisrchallenge05.ui.features.popular.view.PopularScreen
@@ -32,6 +35,7 @@ import com.example.banquemisrchallenge05.ui.features.upcoming.view.UpcomingScree
 import com.example.banquemisrchallenge05.ui.features.upcoming.view_model.UpcomingViewModel
 import com.example.banquemisrchallenge05.utils.navigation.Screen
 import com.example.banquemisrchallenge05.ui.features.home.view_model.HomeViewModel
+import com.example.banquemisrchallenge05.utils.shared_components.CustomLottieAnimation
 import com.example.banquemisrchallenge05.utils.shared_components.NoInternetDialog
 import com.example.weather.utils.managers.InternetChecker
 
@@ -83,8 +87,12 @@ fun HomeHolder(
             }
         }
         Column(
-            modifier = Modifier.padding(top = 50.dp),
+            modifier = Modifier.padding(top = 20.dp),
         ) {
+            CustomLottieAnimation(
+                lottieRawRes = R.raw.dark_splash,
+                modifier = Modifier.height(50.dp).fillMaxWidth()
+            )
             TabRow(
                 selectedTabIndex = selectedTabIndex,
                 containerColor = MaterialTheme.colorScheme.surface,

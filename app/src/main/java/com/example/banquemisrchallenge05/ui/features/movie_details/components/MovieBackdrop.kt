@@ -11,25 +11,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.banquemisrchallenge05.ui.features.movie_details.model.MovieDetails
 import com.example.banquemisrchallenge05.utils.helpers.getImageUrl
-import com.example.banquemisrchallenge05.utils.shared_components.BackButton
 
 @Composable
-fun MovieBackdrop(movie: MovieDetails, navController: NavController) {
+fun MovieBackdrop(movie: MovieDetails) {
     val isVisible = remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         isVisible.value = true
     }
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(300.dp)
-    ) {
         AnimatedVisibility(
             visible = isVisible.value,
             enter = fadeIn(animationSpec = tween(durationMillis = 1000))
@@ -37,15 +29,11 @@ fun MovieBackdrop(movie: MovieDetails, navController: NavController) {
             AsyncImage(
                 model = getImageUrl(movie.backdrop_path ?: movie.poster_path ?: " "),
                 contentDescription = null,
-                contentScale = ContentScale.Fit,
-                modifier = Modifier.fillMaxSize()
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxWidth().padding(top = 10.dp, bottom = 20.dp)
             )
         }
-        BackButton(
-            onBackClick = {
-                navController.navigateUp()
-            }
-        )
 
-    }
+
+
 }
