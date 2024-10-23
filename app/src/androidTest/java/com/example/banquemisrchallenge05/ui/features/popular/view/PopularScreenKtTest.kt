@@ -1,4 +1,4 @@
-package com.example.banquemisrchallenge05.ui.features.now_playing.view
+package com.example.banquemisrchallenge05.ui.features.popular.view
 
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -27,7 +27,7 @@ import org.junit.Rule
 import org.junit.Test
 
 
-class NowPlayingScreenKtTest {
+class PopularScreenKtTest{
     @get:Rule
     val composeTestRule = createComposeRule()
 
@@ -88,8 +88,14 @@ class NowPlayingScreenKtTest {
         // Check that the home screen is displayed
         composeTestRule.onNodeWithTag("movies_loading").assertExists()
         Thread.sleep(1000)
-        // Swipe left in the carousel and select a movie
 
+        // Click on the "Popular" tab and assert that it is selected
+        composeTestRule.onNodeWithTag("popular").performClick()
+        Thread.sleep(1000)
+        composeTestRule.onNodeWithTag("popular_selected").assertExists()
+        Thread.sleep(1000)
+
+        // Swipe left in the carousel and select a movie
         composeTestRule.onNodeWithTag("movie_carousel_pager")
             .performTouchInput { swipeLeft() }
         Thread.sleep(1000)
@@ -116,11 +122,10 @@ class NowPlayingScreenKtTest {
         composeTestRule.onNodeWithTag("back_button").performClick()
         Thread.sleep(1000)
 
-        // Verify that the "Now Playing" tab is still selected and the previous state is persisted
-        composeTestRule.onNodeWithTag("now_playing_selected").assertExists()
+        // Verify that the "Popular" tab is still selected and the previous state is persisted
+        composeTestRule.onNodeWithTag("popular_selected").assertExists()
         composeTestRule.onNodeWithTag("movie_card_6").assertExists() // Ensure the same movie is still there
         composeTestRule.waitForIdle()
 
     }
-
 }
