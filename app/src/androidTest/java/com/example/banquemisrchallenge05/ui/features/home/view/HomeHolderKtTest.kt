@@ -16,6 +16,7 @@ import com.example.banquemisrchallenge05.ui.features.home.view_model.HomeViewMod
 import com.example.banquemisrchallenge05.ui.features.now_playing.view_model.NowPlayingViewModel
 import com.example.banquemisrchallenge05.ui.features.popular.view_model.PopularViewModel
 import com.example.banquemisrchallenge05.ui.features.upcoming.view_model.UpcomingViewModel
+import com.example.banquemisrchallenge05.utils.test_utils.TestTags
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -56,52 +57,52 @@ class HomeHolderKtTest {
             )
         }
 
-        composeTestRule.waitUntilExactlyOneExists(hasTestTag("movies_loading"))
-        composeTestRule.onNodeWithTag("movies_loading").assertExists()
+        composeTestRule.waitUntilExactlyOneExists(hasTestTag(TestTags.MOVIES_LOADING_TAG))
+        composeTestRule.onNodeWithTag(TestTags.MOVIES_LOADING_TAG).assertExists()
 
-        composeTestRule.onNodeWithTag("now_playing_selected").assertExists()
+        composeTestRule.onNodeWithTag(TestTags.NOW_PLAYING_SELECTED_TAG).assertExists()
 
-        composeTestRule.waitUntilExactlyOneExists(hasTestTag("movie_carousel_pager"))
+        composeTestRule.waitUntilExactlyOneExists(hasTestTag(TestTags.MOVIE_CAROUSEL_TAG))
 
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeLeft() }
         Thread.sleep(1000)
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeLeft() }
         Thread.sleep(1000)
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeRight() }
         Thread.sleep(1000)
 
-        composeTestRule.onNodeWithTag("popular").performClick()
+        composeTestRule.onNodeWithTag(TestTags.POPULAR_TAG).performClick()
 
-        composeTestRule.waitUntilExactlyOneExists(hasTestTag("popular_selected"))
-        composeTestRule.onNodeWithTag("popular_selected").assertExists()
-        composeTestRule.waitUntilExactlyOneExists(hasTestTag("movie_carousel_pager"))
+        composeTestRule.waitUntilExactlyOneExists(hasTestTag(TestTags.POPULAR_SELECTED_TAG))
+        composeTestRule.onNodeWithTag(TestTags.POPULAR_SELECTED_TAG).assertExists()
+        composeTestRule.waitUntilExactlyOneExists(hasTestTag(TestTags.MOVIE_CAROUSEL_TAG))
 
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeLeft() }
         Thread.sleep(1000)
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeLeft() }
         Thread.sleep(1000)
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeRight() }
         Thread.sleep(1000)
 
-        composeTestRule.onNodeWithTag("upcoming").performClick()
+        composeTestRule.onNodeWithTag(TestTags.UP_COMING_TAG).performClick()
 
-        composeTestRule.waitUntilExactlyOneExists(hasTestTag("upcoming_selected"))
-        composeTestRule.onNodeWithTag("upcoming_selected").assertExists()
-        composeTestRule.waitUntilExactlyOneExists(hasTestTag("movie_carousel_pager"))
+        composeTestRule.waitUntilExactlyOneExists(hasTestTag(TestTags.UP_COMING_SELECTED_TAG))
+        composeTestRule.onNodeWithTag(TestTags.UP_COMING_SELECTED_TAG).assertExists()
+        composeTestRule.waitUntilExactlyOneExists(hasTestTag(TestTags.MOVIE_CAROUSEL_TAG))
 
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeLeft() }
         Thread.sleep(1000)
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeLeft() }
         Thread.sleep(1000)
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeRight() }
         Thread.sleep(1000)
 

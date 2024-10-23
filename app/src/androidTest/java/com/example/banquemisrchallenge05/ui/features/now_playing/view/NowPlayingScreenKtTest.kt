@@ -22,6 +22,7 @@ import com.example.banquemisrchallenge05.ui.features.popular.view_model.PopularV
 import com.example.banquemisrchallenge05.ui.features.upcoming.view_model.UpcomingViewModel
 import com.example.banquemisrchallenge05.utils.constants.NavigationKeys
 import com.example.banquemisrchallenge05.utils.navigation.Screen
+import com.example.banquemisrchallenge05.utils.test_utils.TestTags
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -37,7 +38,6 @@ class NowPlayingScreenKtTest {
     private lateinit var popularViewModel: PopularViewModel
     private lateinit var upcomingViewModel: UpcomingViewModel
     private lateinit var movieDetailsViewModel: MovieDetailsViewModel
-
 
 
     @Before
@@ -73,7 +73,9 @@ class NowPlayingScreenKtTest {
                 }
                 composable(
                     route = "${NavigationKeys.MOVIE_DETAILS_ROUTE}/{${NavigationKeys.MOVIE_ID}}",
-                    arguments = listOf(navArgument(NavigationKeys.MOVIE_ID) { type = NavType.IntType })
+                    arguments = listOf(navArgument(NavigationKeys.MOVIE_ID) {
+                        type = NavType.IntType
+                    })
                 ) { backStackEntry ->
                     val movieId = backStackEntry.arguments?.getInt(NavigationKeys.MOVIE_ID)
                     MovieDetailsScreen(
@@ -86,39 +88,41 @@ class NowPlayingScreenKtTest {
         }
 
         // Check that the home screen is displayed
-        composeTestRule.onNodeWithTag("movies_loading").assertExists()
+        composeTestRule.onNodeWithTag(TestTags.MOVIES_LOADING_TAG).assertExists()
         Thread.sleep(1000)
         // Swipe left in the carousel and select a movie
 
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeLeft() }
         Thread.sleep(1000)
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeLeft() }
         Thread.sleep(1000)
-        composeTestRule.onNodeWithTag("movie_carousel_pager")
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CAROUSEL_TAG)
             .performTouchInput { swipeLeft() }
         Thread.sleep(1000)
 
 
         // Click on a movie card and assert that the movie details screen is shown
-        composeTestRule.onNodeWithTag("movie_card_6").performClick()
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CARD_6_TAG).performClick()
         composeTestRule.waitForIdle()
 
 
     }
+
     @Test
     fun testStatePersistenceAfterBackNavigation() {
         // Perform navigation and interact with movie carousel
         testNavigationToMovieDetails()
 
         // Click the back button to go back to the home screen
-        composeTestRule.onNodeWithTag("back_button").performClick()
+        composeTestRule.onNodeWithTag(TestTags.BACK_BUTTON_TAG).performClick()
         Thread.sleep(1000)
 
         // Verify that the "Now Playing" tab is still selected and the previous state is persisted
-        composeTestRule.onNodeWithTag("now_playing_selected").assertExists()
-        composeTestRule.onNodeWithTag("movie_card_6").assertExists() // Ensure the same movie is still there
+        composeTestRule.onNodeWithTag(TestTags.NOW_PLAYING_SELECTED_TAG).assertExists()
+        composeTestRule.onNodeWithTag(TestTags.MOVIE_CARD_6_TAG)
+            .assertExists() // Ensure the same movie is still there
         composeTestRule.waitForIdle()
 
     }

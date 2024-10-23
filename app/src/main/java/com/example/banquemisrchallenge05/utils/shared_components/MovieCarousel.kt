@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 import com.example.banquemisrchallenge05.R
 import com.example.banquemisrchallenge05.utils.navigation.Screen
 import com.example.banquemisrchallenge05.utils.shared_models.Movie
+import com.example.banquemisrchallenge05.utils.test_utils.TestTags
 
 @Composable
 fun MovieCarousel(
@@ -53,7 +54,7 @@ fun MovieCarousel(
                     contentPadding = PaddingValues(horizontal = 50.dp),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .testTag("movie_carousel_pager")
+                        .testTag(TestTags.MOVIE_CAROUSEL_TAG )
 
                 ) { page ->
                     MovieCard(

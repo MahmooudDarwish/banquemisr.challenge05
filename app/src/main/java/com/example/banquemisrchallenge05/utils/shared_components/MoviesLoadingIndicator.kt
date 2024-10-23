@@ -9,11 +9,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import com.example.banquemisrchallenge05.R
+import com.example.banquemisrchallenge05.utils.test_utils.TestTags
 
 @Composable
 fun MoviesLoadingIndicator() {
     Row(
-        modifier = Modifier.fillMaxWidth().testTag("movies_loading"),
+        modifier = Modifier.fillMaxWidth().testTag(TestTags.MOVIES_LOADING_TAG),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {

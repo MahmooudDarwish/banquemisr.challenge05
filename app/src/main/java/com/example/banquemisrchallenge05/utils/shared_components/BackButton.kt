@@ -14,6 +14,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.banquemisrchallenge05.R
+import com.example.banquemisrchallenge05.utils.test_utils.TestTags
 
 @Composable
 fun BackButton(onBackClick: () -> Unit) {
@@ -23,7 +24,7 @@ fun BackButton(onBackClick: () -> Unit) {
             .padding(top = 35.dp, start = 16.dp)
             .clickable {
                 onBackClick()
-            }.testTag("back_button")
+            }.testTag(TestTags.BACK_BUTTON_TAG)
     ) {
         Image(
             painter = painterResource(id = R.drawable.circle),
